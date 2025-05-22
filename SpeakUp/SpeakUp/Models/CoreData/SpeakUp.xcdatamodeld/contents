@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="SpeakUp" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22608" systemVersion="23E214" minimumToolsVersion="12.0">
+    <entity name="PracticeText" representedClassName="PracticeText" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <attribute name="content" attributeType="String" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <attribute name="lastPracticedAt" attributeType="Date" usesScalarValueType="NO" optional="YES" syncable="YES"/>
+        <attribute name="practiceCount" attributeType="Integer 16" usesScalarValueType="YES" nonOptional="YES" defaultValueString="0" syncable="YES"/>
+        <relationship name="recordings" destinationEntity="Recording" toMany="YES" deletionRule="Cascade" inverseName="practiceText" inverseEntity="Recording" syncable="YES"/>
+    </entity>
+    <entity name="Recording" representedClassName="Recording" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <attribute name="fileURL" attributeType="URL" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <attribute name="duration" attributeType="Double" usesScalarValueType="YES" nonOptional="YES" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" nonOptional="YES" syncable="YES"/>
+        <relationship name="practiceText" destinationEntity="PracticeText" toMany="NO" deletionRule="Nullify" inverseName="recordings" inverseEntity="PracticeText" syncable="YES"/>
+    </entity>
+</model>
